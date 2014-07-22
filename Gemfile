@@ -24,8 +24,6 @@ group :assets do
   gem 'uglifier', '>= 1.3.0'
   #gem 'coffee-script-source', '~> 1.4.0' # ADD THIS LINE, 1.5.0 doesn't compile ActiveAdmin JavaScript files
 
-  #Twitter bootstrap
-  gem 'twitter-bootstrap-rails'
 end
 
 
