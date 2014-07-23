@@ -1,2 +1,30 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+/**
+ * Author: Eftakhairul Islam <eftakhairul@gmail.com>
+ *
+ */
+
+
+$(function() {
+
+    $('#shorten-button').click(function() {
+
+        if($('#url_url').val() == '') {
+            $('#url_url').popover('toggle');
+        } else {
+
+            $.ajax({
+                url: $('#new_url').attr('action') ,
+                dataType: "json",
+                type: 'POST',
+                data: $('#new_url').serialize(),
+                success: function(data) {
+                    if(data.status == 'success') {
+                        $('#url').val(data.url);
+                    } else {
+                        $('#url').val(data.mgs);
+                    }
+                }
+            });
+        }
+    });
+});
