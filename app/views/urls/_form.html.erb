@@ -1,29 +1,10 @@
-<%= form_for(@url) do |f| %>
-  <% if @url.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@url.errors.count, "error") %> prohibited this url from being saved:</h2>
-
-      <ul>
-      <% @url.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :url %><br>
-    <%= f.text_field :url %>
-  </div>
-  <div class="field">
-    <%= f.label :unique_key %><br>
-    <%= f.text_field :unique_key %>
-  </div>
-  <div class="field">
-    <%= f.label :hits %><br>
-    <%= f.number_field :hits %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= form_for @url,:html => {:class => 'form-search'} do |f| %>
+    <%= f.text_field :url, class: 'input-medium search-query',
+                           placeholder:"Type your URL here..",
+                           'data-content'=>"Please type an URL to make that shorten",
+                           'data-original-title'=>"(!)",
+                           'title'=>"",
+                           'data-toggle'=>"popover",
+                           'data-placement'=>"left" %>
+    <button type="button" id='shorten-button' class="btn btn-success" >Shorten URL</button>
 <% end %>
