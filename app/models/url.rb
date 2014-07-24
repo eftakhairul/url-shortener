@@ -32,7 +32,7 @@ class Url
     rand(36**length).to_s(36)
   end
 
-   # ensure the url starts with it protocol
+   # Ensuring the url starts with it protocol
    def clean_destination_url
      if !self.url.blank? and self.url !~ REGEX_LINK_HAS_PROTOCOL
        self.url.insert(0, URL_PROTOCOL_HTTP)
