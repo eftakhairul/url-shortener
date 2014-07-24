@@ -19,8 +19,6 @@ bundle install```
 ```sh
 rails s```
 
-
-
 It done. :)
 
 
