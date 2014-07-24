@@ -11,8 +11,6 @@ How to Install?
 
 * Change the DB configuration at config/mongoid.yml
 
-* Run the command: rake db:setup
-
 It done. Just start server. Type: rails s
 
 
