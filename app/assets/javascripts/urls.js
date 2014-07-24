@@ -4,6 +4,7 @@
  */
 
 
+//Send request for shortening the URL
 $(function() {
 
     $('#shorten-button').click(function() {
