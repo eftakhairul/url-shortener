@@ -13,7 +13,7 @@
     <% @urls.each do |url| %>
       <tr>
         <td><%= url.url %></td>
-        <td><%= root_url + 's/' + url.unique_key.to_s  %></td>
+        <td><%= short_url(url.unique_key)  %></td>
         <td><%= url.hit_count %></td>
       </tr>
     <% end %>
