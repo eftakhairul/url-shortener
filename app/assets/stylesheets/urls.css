@@ -13,9 +13,8 @@
 }
 
 .short_url_error {
-    @extend .foo;
-    text-decoration-color: red;
-    -moz-text-decoration-color: red; /* Code for Firefox */
+    @extend .short_url;
+    color:red;
 }
 
 #short_url_input{
