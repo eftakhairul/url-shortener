@@ -16,8 +16,8 @@ bundle install```
 
 * Change the DB configuration at config/mongoid.yml
 * To start the server, please type:
-```
-sh rails s```
+```sh
+rails s```
 
 
 
