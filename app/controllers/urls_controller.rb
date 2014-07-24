@@ -2,8 +2,6 @@ class UrlsController < ApplicationController
 
   before_filter :authenticate_user!
 
-  before_action :set_url, only: [:show, :edit, :update, :destroy]
-
   # GET /urls
   # GET /urls.json
   def index
@@ -25,7 +23,7 @@ class UrlsController < ApplicationController
     if @url.save
       response = {:status => 'success', :mgs => root_url + 's/' + @url.unique_key}
     else
-      response = {:status => 'fail', :mgs => 'Something went wrong'}
+      response = {:status => 'fail', :mgs => @url.error}
     end
 
     respond_to do |format|
@@ -33,6 +31,7 @@ class UrlsController < ApplicationController
     end
   end
 
+  # GET /urls//s/:unique_key
   def translate
       # pull the link out of the Database
       @url = Url.where(:unique_key => params[:unique_key]).first
@@ -51,11 +50,6 @@ class UrlsController < ApplicationController
 
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_url
-      @url = Url.find(params[:id])
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def url_params
       params.require(:url).permit(:url, :unique_key, :hits)
