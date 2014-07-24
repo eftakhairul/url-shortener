@@ -11,13 +11,11 @@ with Rails 4 and dvevice gem.
 #### How to install this project?
 * Just clone the project
 * Run the command:
- ```sh
-bundle install```
+ ```bundle install```
 
 * Change the DB configuration at config/mongoid.yml
 * To start the server, please type:
- ```sh
-rails s
+ ```rails s
 ```
 
 It done. :)
