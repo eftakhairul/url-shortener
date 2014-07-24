@@ -1,12 +1,11 @@
-<h1>Listing urls</h1>
+<h1>All URLs</h1>
 
-<table>
+<table class="table table-bordered">
   <thead>
     <tr>
-      <th>Url</th>
-      <th>Unique key</th>
+      <th>Actual URl</th>
+      <th>Short URL</th>
       <th>Hits</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
@@ -14,16 +13,13 @@
     <% @urls.each do |url| %>
       <tr>
         <td><%= url.url %></td>
-        <td><%= url.unique_key %></td>
-        <td><%= url.hits %></td>
-        <td><%= link_to 'Show', url %></td>
-        <td><%= link_to 'Edit', edit_url_path(url) %></td>
-        <td><%= link_to 'Destroy', url, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= root_url + 's/' + url.unique_key.to_s  %></td>
+        <td><%= url.hit_count %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'New Url', new_url_path %>
+
+
