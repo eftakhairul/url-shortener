@@ -23,7 +23,7 @@ class UrlsController < ApplicationController
     if @url.save
       response = {:status => 'success', :mgs => root_url + 's/' + @url.unique_key}
     else
-      response = {:status => 'fail', :mgs => @url.error}
+      response = {:status => 'fail', :mgs => 'Not a valid URL.'}
     end
 
     respond_to do |format|

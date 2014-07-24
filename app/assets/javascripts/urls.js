@@ -7,7 +7,7 @@
 $(function() {
 
     $('#shorten-button').click(function() {
-        $('.short_url').hide();
+        $('.short_url, .short_url_error').hide();
 
         if($('#url_url').val() == '') {
             $('#url_url').popover('toggle');
@@ -23,7 +23,7 @@ $(function() {
                         $('.short_url').show();
                         $('#short_url_input').val(data.mgs).focus().select();
                     } else {
-                        $('.short_url').show().text(data.mgs);
+                        $('.short_url_error').show().text(data.mgs);
                     }
                 }
             });

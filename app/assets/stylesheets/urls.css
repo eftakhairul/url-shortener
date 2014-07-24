@@ -8,7 +8,7 @@
     padding-left: 80px;
 }
 
-.short_url {
+.short_url, .short_url_error {
     display: none;
 }
 
