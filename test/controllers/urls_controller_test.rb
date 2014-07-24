@@ -18,32 +18,9 @@ class UrlsControllerTest < ActionController::TestCase
 
   test "should create url" do
     assert_difference('Url.count') do
-      post :create, url: { hits: @url.hits, unique_key: @url.unique_key, url: @url.url }
+      post :create, url: { hit_count: @url.hits, unique_key: @url.unique_key, url: @url.url }
     end
 
     assert_redirected_to url_path(assigns(:url))
-  end
-
-  test "should show url" do
-    get :show, id: @url
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get :edit, id: @url
-    assert_response :success
-  end
-
-  test "should update url" do
-    patch :update, id: @url, url: { hits: @url.hits, unique_key: @url.unique_key, url: @url.url }
-    assert_redirected_to url_path(assigns(:url))
-  end
-
-  test "should destroy url" do
-    assert_difference('Url.count', -1) do
-      delete :destroy, id: @url
-    end
-
-    assert_redirected_to urls_path
   end
 end
