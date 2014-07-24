@@ -7,3 +7,11 @@
     padding-top: 150px;
     padding-left: 80px;
 }
+
+.short_url {
+    display: none;
+}
+
+#short_url_input{
+    width: 200px;
+}

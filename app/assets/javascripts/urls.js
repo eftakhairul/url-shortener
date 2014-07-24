@@ -7,6 +7,7 @@
 $(function() {
 
     $('#shorten-button').click(function() {
+        $('.short_url').hide();
 
         if($('#url_url').val() == '') {
             $('#url_url').popover('toggle');
@@ -19,9 +20,10 @@ $(function() {
                 data: $('#new_url').serialize(),
                 success: function(data) {
                     if(data.status == 'success') {
-                        $('#url').val(data.url);
+                        $('.short_url').show();
+                        $('#short_url_input').val(data.mgs).focus().select();
                     } else {
-                        $('#url').val(data.mgs);
+                        $('.short_url').show().text(data.mgs);
                     }
                 }
             });
