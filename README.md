@@ -12,8 +12,7 @@ with Rails 4 and dvevice gem.
 * Just clone the project
 * Run the command:
  ```sh
-bundle install
-```
+bundle install```
 
 * Change the DB configuration at config/mongoid.yml
 * To start the server, please type:
