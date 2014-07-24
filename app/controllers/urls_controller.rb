@@ -7,12 +7,7 @@ class UrlsController < ApplicationController
   # GET /urls
   # GET /urls.json
   def index
-    @urls = Url.all
-  end
-
-  # GET /urls/1
-  # GET /urls/1.json
-  def show
+    @urls = current_user.urls
   end
 
   # GET /urls/new
@@ -20,49 +15,40 @@ class UrlsController < ApplicationController
     @url = Url.new
   end
 
-  # GET /urls/1/edit
-  def edit
-  end
-
-  # POST /urls
   # POST /urls.json
   def create
+
     @url = Url.new(url_params)
+    @url.user = current_user
+    @url.unique_key = @url.generate_unique_key
+
+    if @url.save
+      response = {:status => 'success', :mgs => root_url + 's/' + @url.unique_key}
+    else
+      response = {:status => 'fail', :mgs => 'Something went wrong'}
+    end
 
     respond_to do |format|
-      if @url.save
-        format.html { redirect_to @url, notice: 'Url was successfully created.' }
-        format.json { render :show, status: :created, location: @url }
+      format.json { render json: response }
+    end
+  end
+
+  def translate
+      # pull the link out of the Database
+      @url = Url.where(:unique_key => params[:unique_key]).first
+
+      if @url
+        @url.hit_count_increament
+        # do a 301 redirect to the destination url
+        head :moved_permanently, :location => @url.url
       else
-        format.html { render :new }
-        format.json { render json: @url.errors, status: :unprocessable_entity }
+        # if we don't find the shortened link, redirect to the root
+        # make this configurable in future versions
+        head :moved_permanently, :location => root_url
       end
-    end
   end
 
-  # PATCH/PUT /urls/1
-  # PATCH/PUT /urls/1.json
-  def update
-    respond_to do |format|
-      if @url.update(url_params)
-        format.html { redirect_to @url, notice: 'Url was successfully updated.' }
-        format.json { render :show, status: :ok, location: @url }
-      else
-        format.html { render :edit }
-        format.json { render json: @url.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
-  # DELETE /urls/1
-  # DELETE /urls/1.json
-  def destroy
-    @url.destroy
-    respond_to do |format|
-      format.html { redirect_to urls_url, notice: 'Url was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
