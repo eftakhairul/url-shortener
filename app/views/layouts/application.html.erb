@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html>
+
     <head>
       <title>Link Shortener</title>
       <!--[if lt IE 9]>
@@ -11,7 +12,9 @@
       <%= csrf_meta_tags %>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
+
     <body>
+
         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -32,13 +35,13 @@
           </div>
         </div>
 
+        <!-- Begin page content -->
         <div id="wrap">
-          <!-- Begin page content -->
           <div class="container">
             <%= yield %>
           </div>
-
         </div>
+        <!-- End page content -->
 
         <div id="footer">
           <div class="container">
@@ -46,13 +49,9 @@
           </div>
         </div>
 
-
-        <!-- Bootstrap core JavaScript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
+        <!-- Bootstrap core JavaScript -->
         <%= javascript_include_tag "application" %>
   </body>
-
 </html>
 
 
