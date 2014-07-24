@@ -8,8 +8,14 @@
     padding-left: 80px;
 }
 
-.short_url, .short_url_error {
+.short_url{
     display: none;
+}
+
+.short_url_error {
+    @extend .foo;
+    text-decoration-color: red;
+    -moz-text-decoration-color: red; /* Code for Firefox */
 }
 
 #short_url_input{
