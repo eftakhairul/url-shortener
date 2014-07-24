@@ -15,7 +15,8 @@ with Rails 4 and dvevice gem.
 
 * Change the DB configuration at config/mongoid.yml
 * To start the server, please type:
- ```rails s
+ ```
+rails s
 ```
 
 It done. :)
