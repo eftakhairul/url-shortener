@@ -2,17 +2,21 @@ class UrlsController < ApplicationController
 
   before_filter :authenticate_user!
 
+  #listing all URLs
   # GET /urls
   # GET /urls.json
   def index
     @urls = current_user.urls
   end
 
+
+  #Main URL Shortener Page
   # GET /urls/new
   def new
     @url = Url.new
   end
 
+  #Make short url from actual url and send it back as json
   # POST /urls.json
   def create
 
@@ -31,6 +35,7 @@ class UrlsController < ApplicationController
     end
   end
 
+  # translate short url to actual url
   # GET /urls//s/:unique_key
   def translate
       # pull the link out of the Database
